@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Mika Ella 🎂</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"DM Sans",sans-serif}
+body{
+  min-height:100vh;overflow-x:hidden;color:#fff;
+  background:radial-gradient(circle at 50% 15%,#47204d 0,#180d25 42%,#080711 100%);
+}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.stars{position:fixed;inset:0;pointer-events:none;opacity:.7;
+ background-image:radial-gradient(#fff 1px,transparent 1px);
+ background-size:48px 48px;animation:drift 18s linear infinite}
+@keyframes drift{to{transform:translateY(48px)}}
+
+.wrap{position:relative;z-index:2;min-height:100vh;display:grid;place-items:center;padding:28px 18px}
+.scene{width:min(720px,100%);text-align:center}
+.badge{display:inline-block;padding:8px 15px;border:1px solid #ffffff30;border-radius:999px;
+ background:#ffffff0d;backdrop-filter:blur(10px);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+h1{font-family:"Playfair Display",serif;font-size:clamp(48px,11vw,92px);line-height:.95;margin:22px 0 12px}
+.gradient{background:linear-gradient(90deg,#ffd4ed,#fff,#ff9ed3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{color:#e9ddea;font-size:clamp(15px,3vw,19px);margin:0 auto 30px;max-width:540px}
+
+.envelope{
+ width:min(580px,94vw);height:370px;margin:auto;position:relative;cursor:pointer;
+ perspective:1000px;filter:drop-shadow(0 25px 45px #0008)
+}
+.env-back,.env-front,.flap{
+ position:absolute;inset:0;border-radius:18px;
+ background:linear-gradient(145deg,#fff8fb,#f4d6e6);border:1px solid #ffffff80;
+}
+.env-back{overflow:hidden}
+.env-back:before,.env-back:after{content:"❤";position:absolute;color:#f26ba8;opacity:.16;font-size:60px}
+.env-back:before{left:25px;top:20px}.env-back:after{right:30px;bottom:25px}
+.flap{height:55%;transform-origin:top;clip-path:polygon(0 0,100% 0,50% 100%);
+ background:linear-gradient(135deg,#ffd9e9,#f0bdd5);z-index:4;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.env-front{z-index:3;top:50%;height:50%;border-radius:0 0 18px 18px;background:linear-gradient(145deg,#f9dce9,#efbfd6)}
+.heart-seal{position:absolute;z-index:6;left:50%;top:48%;transform:translate(-50%,-50%);
+ width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:#d93678;
+ box-shadow:0 10px 25px #d9367855;font-size:28px;transition:opacity .4s}
+.letter{
+ position:absolute;z-index:2;left:7%;right:7%;top:8%;height:84%;padding:32px 28px;
+ background:#fffdfd;color:#2b1622;border-radius:14px;box-shadow:0 10px 30px #0002;
+ transform:translateY(40px);transition:transform 1s cubic-bezier(.2,.8,.2,1),z-index 0s .5s;
+ text-align:left;overflow:auto
+}
+.open .flap{transform:rotateX(180deg);z-index:1}
+.open .heart-seal{opacity:0}
+.open .letter{transform:translateY(-75px);z-index:5;transition-delay:.25s}
+.letter h2{font-family:"Playfair Display",serif;margin:0 0 16px;font-size:30px;color:#a72f61}
+.letter p{line-height:1.75;margin:10px 0}
+.signature{margin-top:22px;font-family:"Playfair Display",serif;font-size:22px;color:#a72f61}
+.hint{margin-top:18px;font-size:12px;color:#d8bed2;letter-spacing:1px}
+
+.controls{margin-top:36px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+button{border:0;border-radius:999px;padding:13px 21px;font:700 14px "DM Sans";cursor:pointer}
+.primary{background:#ff77ad;color:#240b19;box-shadow:0 10px 25px #ff4f9b30}
+.secondary{background:#ffffff12;color:#fff;border:1px solid #ffffff25}
+.footer{margin-top:20px;color:#9e8b9d;font-size:11px}
+
+.heart{position:fixed;z-index:1;bottom:-40px;font-size:18px;animation:floatUp linear forwards;pointer-events:none}
+@keyframes floatUp{
+  to{transform:translateY(-110vh) translateX(var(--x)) rotate(25deg);opacity:0}
+}
+@media(max-width:520px){
+ .envelope{height:330px}.letter{padding:24px 20px}.letter h2{font-size:25px}
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<canvas id="fx"></canvas>
+
+<div class="wrap">
+<main class="scene">
+  <div class="badge">A little surprise for you ✨</div>
+  <h1><span class="gradient">Happy Birthday</span> 🎂</h1>
+  <p class="subtitle">For <b>Mika Ella Calda</b> — I made this little corner of the internet just for you.</p>
+
+  <div class="envelope" id="envelope" aria-label="Open your birthday letter">
+    <div class="env-back"></div>
+    <article class="letter">
+      <h2>Dear Mika Ella, 💗</h2>
+      <p>Today is your day, and I hope this tiny surprise makes you smile.</p>
+      <p>May this new chapter bring you beautiful memories, peaceful days, exciting adventures, and people who genuinely make you happy.</p>
+      <p>Keep being the wonderful person you are. You deserve a birthday filled with love, laughter, and a little bit of magic.</p>
+      <p>Thank you for being someone worth celebrating. 🌷</p>
+      <div class="signature">Happy Birthday! — With love, always 💕</div>
+    </article>
+    <div class="flap"></div>
+    <div class="env-front"></div>
+    <div class="heart-seal">❤</div>
+  </div>
+
+  <div class="hint">TAP THE ENVELOPE TO OPEN YOUR SURPRISE</div>
+
+  <div class="controls">
+    <button class="primary" id="surprise">✨ Make it magical</button>
+    <button class="secondary" id="reset">↩ Close letter</button>
+  </div>
+  <div class="footer">Made with HTML • CSS • JavaScript • just for you</div>
+</main>
+</div>
+
+<script>
+const envelope=document.getElementById("envelope");
+const surprise=document.getElementById("surprise");
+const reset=document.getElementById("reset");
+const canvas=document.getElementById("fx");
+const ctx=canvas.getContext("2d");
+let particles=[];
+
+function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+addEventListener("resize",resize); resize();
+
+function openLetter(){envelope.classList.add("open"); burst(innerWidth/2,innerHeight*.45,70)}
+envelope.addEventListener("click",openLetter);
+surprise.addEventListener("click",()=>{openLetter(); burst(innerWidth/2,innerHeight*.35,140); hearts(18)});
+reset.addEventListener("click",()=>envelope.classList.remove("open"));
+
+function burst(x,y,n=60){
+ for(let i=0;i<n;i++){
+  const a=Math.random()*Math.PI*2,s=2+Math.random()*7;
+  particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2,g:.08,life:70+Math.random()*50,size:2+Math.random()*3});
+ }
+}
+function hearts(n){
+ for(let i=0;i<n;i++){
+  const e=document.createElement("div");e.className="heart";e.textContent=["❤","♥","♡","✦"][Math.floor(Math.random()*4)];
+  e.style.left=Math.random()*100+"vw";e.style.setProperty("--x",(Math.random()*180-90)+"px");
+  e.style.animationDuration=(4+Math.random()*5)+"s";e.style.fontSize=(14+Math.random()*18)+"px";
+  document.body.appendChild(e);setTimeout(()=>e.remove(),10000);
+ }
+}
+function loop(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ particles=particles.filter(p=>p.life>0);
+ for(const p of particles){p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.life--;ctx.globalAlpha=Math.max(0,p.life/100);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=["#ff77ad","#ffd4ed","#fff","#ffc857"][Math.floor(Math.random()*4)];ctx.fill()}
+ ctx.globalAlpha=1;requestAnimationFrame(loop)
+}
+loop();
+
+setTimeout(()=>hearts(8),800);
+</script>
+</body>
+</html>
